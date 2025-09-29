@@ -1,13 +1,15 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native'
-import Item from "./components/Item/Item"
+import React, {useState} from 'react';
+import {SafeAreaView, Text} from 'react-native'
+import MyText from "./components/MyText/MyText"
 
 const App = () => {
+    const [text, setText] = useState("Hello World!")
   return (
   <SafeAreaView>
-      <Item name={"chair"} price={20}></Item>
-      <Item name={"table"} price={50}></Item>
-      <Item name={"bed"} price={70}></Item>
+      <Text
+          onPress = {() => setText("Hello Enes World!")}>
+          {text}
+      </Text>
   </SafeAreaView>
   );
 }
