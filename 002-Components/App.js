@@ -1,11 +1,13 @@
 import React from 'react';
-import { SafeAreaView,Text } from 'react-native'
-import styles from "./components/MyText/style";
+import { SafeAreaView } from 'react-native'
+import Item from "./components/Item/Item"
 
 const App = () => {
   return (
   <SafeAreaView>
-    <Text style={styles.text} >Hello World!</Text>
+      <Item name={"chair"} price={20}></Item>
+      <Item name={"table"} price={50}></Item>
+      <Item name={"bed"} price={70}></Item>
   </SafeAreaView>
   );
 }
