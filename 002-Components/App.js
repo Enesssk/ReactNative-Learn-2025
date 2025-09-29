@@ -1,16 +1,23 @@
-import React, {useState} from 'react';
-import {SafeAreaView, Text} from 'react-native'
-import MyText from "./components/MyText/MyText"
+import React, {useRef} from 'react';
+import {SafeAreaView, Text, ScrollView, Button} from 'react-native'
 
 const App = () => {
-    const [text, setText] = useState("Hello World!")
+    let array = Array(1000).fill(0)
+    const scrollViewRef = useRef(null)
+
+    const handleClick = () => {
+        scrollViewRef.current.scrollTo({x: 0, y:0, animated: true})
+    }
+
   return (
   <SafeAreaView>
-      <Text
-          onPress = {() => setText("Hello Enes World!")}>
-          {text}
-      </Text>
-  </SafeAreaView>
+      <ScrollView ref={scrollViewRef}>
+          {array.map((value, index) => (
+              <Text key={index}>Hello World!</Text>
+          ))}
+  </ScrollView>
+      <Button onPress={handleClick} title={"Scroll to Top"}/>
+</SafeAreaView>
   );
 }
 
