@@ -1,25 +1,15 @@
-import React, {useState,useContext} from 'react';
+import React, {} from 'react';
 import {SafeAreaView, Text, View, Button} from 'react-native'
-import {ThemeContext} from "./context/ThemeContext";
-import HomeScreen from "./components/HomeScreen/HomeScreen";
+import useToggle from "./customHooks/useToggle";
 
 const App = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false)
-
-    const toggleTheme = () => {
-        setIsDarkMode(!isDarkMode)
-    }
-
+    const [isOn, toggleIsOn] = useToggle(false)
   return (
-      <ThemeContext.Provider value={isDarkMode}>
           <SafeAreaView>
-              <View style={{backgroundColor: isDarkMode ? "#222222" : "#ffffff"}}>
-      <Text>Hello World!!</Text>
-              </View>
-              <Button title={"Switch Mode"} onPress={toggleTheme}>
+              <Text>{isOn ? "On" : "Off"}</Text>
+              <Button title={"Toggle Text"} onPress={toggleIsOn}>
               </Button>
           </SafeAreaView>
-</ThemeContext.Provider>
   );
 }
 
