@@ -1,16 +1,43 @@
-import React, {} from 'react';
-import {SafeAreaView, Text, View, Button} from 'react-native'
-import useToggle from "./customHooks/useToggle";
+import React, {Component} from 'react';
+import {SafeAreaView, Text} from 'react-native'
 
-const App = () => {
-    const [isOn, toggleIsOn] = useToggle(false)
-  return (
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        console.Log("Component is mounted")
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.Log("Checking if component should update")
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.Log("Getting snapshot before component update")
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.Log("Component has updated")
+    }
+
+    componentWillUnmount() {
+        console.log("Component will unmount")
+    }
+
+    render() {
+     return (
           <SafeAreaView>
-              <Text>{isOn ? "On" : "Off"}</Text>
-              <Button title={"Toggle Text"} onPress={toggleIsOn}>
-              </Button>
+             <Text
+                 onPress = {() => {
+                     this.setState({name: "Nata"})
+             }}>
+                 Hello, {this.state?.name}!
+             </Text>
           </SafeAreaView>
-  );
+  )}
 }
 
 export default App;
