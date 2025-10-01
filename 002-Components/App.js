@@ -1,21 +1,29 @@
 import React, {useState} from 'react';
-import {SafeAreaView, TextInput} from 'react-native'
+import {SafeAreaView, ScrollView, Image} from 'react-native'
 
 const App = () => {
     const [textInput, setTextInput] = useState("")
      return (
           <SafeAreaView>
-              <TextInput
-              style={{borderRadius: 4, borderWidth: 1, padding: 10, marginHorizontal: 8}}
-              value={textInput}
-              onChangeText={(textInput) => {
-                  setTextInput(textInput)
-              }}
-              autoFocus={true}
-              placeholder={"Please enter text"}
-              keyboardType={"numeric"}
+              <ScrollView
+              contentContainerStyle={{height: 600, backgroundColor: "red"}}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              horizontal={true}
+              onScroll={
+                  console.log("Scroll is going..")
+              }
               >
-              </TextInput>
+                  <Image source={require("./assets/images/appicon.png")} style={{width: 500, height: 500}}
+                  >
+                  </Image>
+                  <Image source={require("./assets/images/appicon.png")} style={{width: 500, height: 500}}
+                  >
+                  </Image>
+                  <Image source={require("./assets/images/appicon.png")} style={{width: 500, height: 500}}
+                  >
+                  </Image>
+              </ScrollView>
               </SafeAreaView>
   )
 }
