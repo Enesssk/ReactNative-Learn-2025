@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, Pressable,ScrollView, TextInput} from 'react-native'
+import {SafeAreaView, Text, Pressable, ScrollView, TextInput, TouchableOpacity, Switch, View} from 'react-native'
 
 const App = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [shouldKeepLoggedIn, setShouldKeepLoggedIn] = useState(true)
      return (
           <SafeAreaView>
               <ScrollView>
@@ -11,7 +12,6 @@ const App = () => {
                              value={email}
                              onChangeText={value => {
                                  setEmail(value)}}
-                             autoFocus={true}
                              placeholder={"Please enter your email"}
                   />
                   <TextInput style={{borderWidth: 1, borderRadius: 4, padding: 10, marginTop: 10, marginHorizontal: 10}}
@@ -21,10 +21,15 @@ const App = () => {
                              }}
                              placeholder={"Please enter your password"}
                   />
-
-                  <Pressable style={[{backgroundColor: "black", marginTop: 10, marginHorizontal: 20},
+                  <View style={{flexDirection: "row", alignItems: "center", margin: 10}}>
+                      <Switch value={shouldKeepLoggedIn} onValueChange={ value => setShouldKeepLoggedIn(value)}/>
+                          <Text style={{marginLeft: 8}}>
+                              Keep me logged In
+                          </Text>
+                  </View>
+                  <TouchableOpacity style={[{backgroundColor: "black", marginTop: 10, marginHorizontal: 20},
                       (email.length === 0 || password.length<8) && {opacity: 0.5}]}
-                             
+
                   disabled={email.length === 0 || password.length<8}
                              onPress={() => {
                                  console.log(email, password)
@@ -32,7 +37,7 @@ const App = () => {
                       <Text style={{color: "white", textAlign: "center", padding: 10}}>
                           Submit
                       </Text>
-                  </Pressable>
+                  </TouchableOpacity>
               </ScrollView>
               </SafeAreaView>
   )
