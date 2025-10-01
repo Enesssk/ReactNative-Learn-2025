@@ -1,18 +1,21 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Image} from 'react-native'
+import {SafeAreaView, TextInput} from 'react-native'
 
 const App = () => {
-    const [imageSource, setImageSource] = useState({uri: "http://reactnative.dev/img/tiny_logo.png"})
+    const [textInput, setTextInput] = useState("")
      return (
           <SafeAreaView>
-              <Image
-                  source={imageSource}
-                  style={{width: 100, height: 100, backgroundColor: "red"}}
-                  resizeMode={"center"}
-                  onError={ () => {
-                  setImageSource(require("./assets/images/appicon.png"))
-                  }}
-              />
+              <TextInput
+              style={{borderRadius: 4, borderWidth: 1, padding: 10, marginHorizontal: 8}}
+              value={textInput}
+              onChangeText={(textInput) => {
+                  setTextInput(textInput)
+              }}
+              autoFocus={true}
+              placeholder={"Please enter text"}
+              keyboardType={"numeric"}
+              >
+              </TextInput>
               </SafeAreaView>
   )
 }
