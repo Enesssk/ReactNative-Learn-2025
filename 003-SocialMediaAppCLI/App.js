@@ -1,10 +1,9 @@
-import React from "react"
+import React, { useEffect, useState } from 'react';
 import {FlatList, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import Title from "./components/title/Title"
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import globalStyle from "./assets/styles/globalStyle"
-import userStory   from "./components/userStory/userStory";
 import UserStory from "./components/userStory/userStory";
 
 const App = () => {
@@ -49,7 +48,29 @@ const App = () => {
         },
         ]
 
-  return (
+    const userStoriesPageSize = 4 //her 4 itemda bir görüntüle..
+    const [userStoriesCurrentPage, setUserStoriesCurrentPage] = useState(1)
+    const [userStoriesRenderedData, setUserStoriesRenderedData] = useState([])
+    const [isLoadingUserStories, setIsLoadingUserStories] = useState(false)
+
+    const pagination = (database, currentPage, pageSize) => {
+        console.log("current page", currentPage)
+        const startIndex = (currentPage - 1) * pageSize
+        const endIndex = startIndex + pageSize
+        if(startIndex >= database.length) {
+            return []
+        }
+        return database.slice(startIndex, endIndex) //başlangıçtan sona paginationla..
+    }
+
+    useEffect(() => {
+        setIsLoadingUserStories(true) //yüklensin sonra..
+        const getInitialData = pagination(userStories, 1, userStoriesPageSize)
+        setUserStoriesRenderedData(getInitialData)
+        setIsLoadingUserStories(false)
+    }, []);
+
+    return (
     <SafeAreaView>
         <View style={globalStyle.header}>
             <Title title={"Let's Explore"}/>
@@ -62,11 +83,25 @@ const App = () => {
         </View>
         <View style={globalStyle.userStoryContainer}>
             <FlatList
+                onEndReachedThreshold={0.5}
+                onEndReached={() => {
+                    if(isLoadingUserStories) {return}
+                    setIsLoadingUserStories(true)
+                    const contentToAppend = pagination(userStories, userStoriesCurrentPage+1, userStoriesPageSize)
+                    if(contentToAppend.length > 0) { //data var demek..
+                        setUserStoriesCurrentPage(userStoriesCurrentPage+1)
+                        setUserStoriesRenderedData(prev => [...prev, ...contentToAppend]) //öncesinden yenisine hepsini getir..
+                }
+                    setIsLoadingUserStories(false)
+                }}
+
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
-                data={userStories}
+                data={userStoriesRenderedData}
                       renderItem={({item}) => (
-                <UserStory firstName={item.firstName} profileImage={item.profileImage}
+                <UserStory key={"userStory" + item.id}
+                           firstName={item.firstName}
+                           profileImage={item.profileImage}
                 />
                 )}
             />
