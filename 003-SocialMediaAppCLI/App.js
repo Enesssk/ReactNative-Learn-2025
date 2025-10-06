@@ -6,7 +6,7 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      <Text style={{fontSize: 50, fontFamily: getFontFamily("Inter", 100)}}>Hello World!!!</Text>
+      <Text style={{fontSize: 50, fontFamily: getFontFamily("Inter", 100)}}>Hello World!!</Text>
     </SafeAreaView>
   );
 }
