@@ -66,7 +66,7 @@ const App = () => {
                 horizontal={true}
                 data={userStories}
                       renderItem={({item}) => (
-                <UserStory firstName={item.firstName} image={item.profileImage}
+                <UserStory firstName={item.firstName} profileImage={item.profileImage}
                 />
                 )}
             />
