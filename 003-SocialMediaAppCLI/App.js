@@ -126,51 +126,69 @@ const App = () => {
         return database.slice(startIndex, endIndex) //başlangıçtan sona paginationla..
     }
 
-
     useEffect(() => {
         setIsLoadingUserStories(true) //yüklensin sonra..
         const getInitialData = pagination(userStories, 1, userStoriesPageSize)
         setUserStoriesRenderedData(getInitialData)
         setIsLoadingUserStories(false)
+
+      setIsLoadingUserPosts(true) //yüklensin sonra..
+      const getInitialPostData = pagination(userPosts, 1, userStoriesPageSize)
+      setUserPostsRenderedData(getInitialPostData)
+      setIsLoadingUserPosts(false)
     }, []);
 
     return (
     <SafeAreaView>
-        <View style={globalStyle.header}>
-            <Title title={"Let's Explore"}/>
-            <TouchableOpacity style={globalStyle.messageIcon}>
+        <FlatList
+          ListHeaderComponent={<>
+            <View style={globalStyle.header}>
+              <Title title={"Let's Explore"}/>
+              <TouchableOpacity style={globalStyle.messageIcon}>
                 <FontAwesomeIcon icon={faEnvelope} size={20} color={"#898DAE"}/>
                 <View style={globalStyle.messageNumberContainer}>
-                    <Text style={globalStyle.messageNumber}>2</Text>
+                  <Text style={globalStyle.messageNumber}>2</Text>
                 </View>
-            </TouchableOpacity>
-        </View>
-        <View style={globalStyle.userStoryContainer}>
-            <FlatList
+              </TouchableOpacity>
+            </View>
+            <View style={globalStyle.userStoryContainer}>
+              <FlatList
                 onEndReachedThreshold={0.5}
                 onEndReached={() => {
-                    if(isLoadingUserStories) {return}
-                    setIsLoadingUserStories(true)
-                    const contentToAppend = pagination(userStories, userStoriesCurrentPage+1, userStoriesPageSize)
-                    if(contentToAppend.length > 0) { //data var demek..
-                        setUserStoriesCurrentPage(userStoriesCurrentPage+1)
-                        setUserStoriesRenderedData(prev => [...prev, ...contentToAppend]) //öncesinden yenisine hepsini getir..
-                }
-                    setIsLoadingUserStories(false)
+                  if(isLoadingUserStories) {return}
+                  setIsLoadingUserStories(true)
+                  const contentToAppend = pagination(userStories, userStoriesCurrentPage+1, userStoriesPageSize)
+                  if(contentToAppend.length > 0) { //data var demek..
+                    setUserStoriesCurrentPage(userStoriesCurrentPage+1)
+                    setUserStoriesRenderedData(prev => [...prev, ...contentToAppend]) //öncesinden yenisine hepsini getir..
+                  }
+                  setIsLoadingUserStories(false)
                 }}
 
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={userStoriesRenderedData}
-                      renderItem={({item}) => (
-                <UserStory key={"userStory" + item.id}
-                           firstName={item.firstName}
-                           profileImage={item.profileImage}
-                />
+                renderItem={({item}) => (
+                  <UserStory key={"userStory" + item.id}
+                             firstName={item.firstName}
+                             profileImage={item.profileImage}
+                  />
                 )}
-            />
-        </View>
-        <FlatList data={userPosts} renderItem={({item}) => (
+              />
+            </View>
+        </>}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => {
+            if(isLoadingUserPosts) {return}
+            setIsLoadingUserPosts(true)
+            const contentToAppend = pagination(userPosts,userPostsCurrentPage+1,userPostsPageSize)
+            if(contentToAppend.length > 0) {
+              setUserPostsCurrentPage(userPostsCurrentPage + 1)
+              setUserPostsRenderedData(prev => [...prev, ...contentToAppend]);
+            }
+            setIsLoadingUserPosts(false)
+          }}
+          data={userPostsRenderedData} renderItem={({item}) => (
             <UserPost image={item.image}
                       key={item.id}
                       firstName={item.firstName}
