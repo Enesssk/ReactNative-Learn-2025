@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native'
+import { horizontalScale, verticalScale } from '../../assets/styles/scaling';
 
 const style = StyleSheet.create({
   header: {
-    marginTop: 24,
-    marginHorizontal: 16
+    marginTop: verticalScale(24),
+    marginHorizontal: horizontalScale(16)
   },
   user: {
     flexDirection: "row",
@@ -13,11 +14,11 @@ const style = StyleSheet.create({
     flexDirection: "row"
   },
   textComponent: {
-    marginLeft: 8
+    marginLeft: horizontalScale(8)
   },
   imageComponent: {
     alignItems: "center",
-    marginTop: 8
+    marginTop: verticalScale(8)
   },
   userInfo: {
     flexDirection: "row",
@@ -25,12 +26,12 @@ const style = StyleSheet.create({
   },
   symbolInfo: {
     flexDirection: "row",
-    marginHorizontal: 16,
-    marginTop: 8,
-    padding: 3
+    marginHorizontal: horizontalScale(16),
+    marginTop: verticalScale(8),
+    padding: horizontalScale(3)
   },
   symbolText: {
-    marginLeft: 3
+    marginLeft: horizontalScale(3)
   }
 
 })
