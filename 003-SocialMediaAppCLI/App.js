@@ -133,7 +133,7 @@ const App = () => {
         setIsLoadingUserStories(false)
 
       setIsLoadingUserPosts(true) //yüklensin sonra..
-      const getInitialPostData = pagination(userPosts, 1, userStoriesPageSize)
+      const getInitialPostData = pagination(userPosts, 1, userPostsPageSize)
       setUserPostsRenderedData(getInitialPostData)
       setIsLoadingUserPosts(false)
     }, []);
