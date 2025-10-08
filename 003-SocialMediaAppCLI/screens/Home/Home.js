@@ -149,7 +149,7 @@ const Home = ({navigation}) => {
           ListHeaderComponent={<>
             <View style={style.header}>
               <Title title={"Let's Explore"}/>
-              <TouchableOpacity style={style.messageIcon} onPress={() => {navigation.navigate(Routes.Profile)}}>
+              <TouchableOpacity style={style.messageIcon}>
                 <FontAwesomeIcon icon={faEnvelope} size={scaleFontSize(20)} color={"#898DAE"}/>
                 <View style={style.messageNumberContainer}>
                   <Text style={style.messageNumber}>2</Text>
