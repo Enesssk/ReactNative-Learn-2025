@@ -8,47 +8,47 @@ import style from "./style"
 import UserStory from "../../components/userStory/userStory";
 import UserPost from "../../components/userPost/userPost";
 import { scaleFontSize } from '../../assets/styles/scaling';
-import { NavigationContainer } from '@react-navigation/native';
+import globalStyle from '../../assets/styles/globalStyle';
 
-const App = () => {
+const Home = () => {
 
   const userStories = [
     {
       firstName: "Joseph",
       id: 1,
-      profileImage: require("./assets/images/default_profile.png"),
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Joseph",
       id: 2,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Enes",
       id: 3,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Şeyma",
       id: 4,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Yusuf",
       id: 5,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Emre",
       id: 6,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Hatice",
       id: 7,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Hüseyin",
       id: 8,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     { firstName: "Serap",
       id: 9,
-      profileImage: require("./assets/images/default_profile.png")
+      profileImage: require("../../assets/images/default_profile.png"),
     },
   ]
   const userPosts = [
@@ -60,8 +60,8 @@ const App = () => {
       comments: 20,
       bookmarks: 30,
       id:1,
-      image: require("./assets/images/default_post.png"),
-      profilePhoto: require("./assets/images/default_profile.png"),
+      image: require("../../assets/images/default_post.png"),
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     {
       firstName: "Şeyma",
@@ -71,8 +71,8 @@ const App = () => {
       comments: 23123,
       bookmarks: 32,
       id:2,
-      image: require("./assets/images/default_post.png"),
-      profilePhoto: require("./assets/images/default_profile.png"),
+      image: require("../../assets/images/default_post.png"),
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     {
       firstName: "Hüseyin",
@@ -82,8 +82,8 @@ const App = () => {
       comments: 65,
       bookmarks: 34,
       id:3,
-      image: require("./assets/images/default_post.png"),
-      profilePhoto: require("./assets/images/default_profile.png"),
+      image: require("../../assets/images/default_post.png"),
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     {
       firstName: "Hatice",
@@ -93,8 +93,8 @@ const App = () => {
       comments: 43,
       bookmarks: 123,
       id:4,
-      image: require("./assets/images/default_post.png"),
-      profilePhoto: require("./assets/images/default_profile.png"),
+      image: require("../../assets/images/default_post.png"),
+      profileImage: require("../../assets/images/default_profile.png"),
     },
     {
       firstName: "Emre",
@@ -104,8 +104,8 @@ const App = () => {
       comments: 12,
       bookmarks: 32,
       id:5,
-      image: require("./assets/images/default_post.png"),
-      profilePhoto: require("./assets/images/default_profile.png"),
+      image: require("../../assets/images/default_post.png"),
+      profileImage: require("../../assets/images/default_profile.png"),
     },
 
   ]
@@ -143,8 +143,7 @@ const App = () => {
   }, []);
 
   return (
-    <SafeAreaView>
-      <NavigationContainer>
+    <SafeAreaView style={globalStyle.backgroundColor}>
         <FlatList
           ListHeaderComponent={<>
             <View style={style.header}>
@@ -202,14 +201,13 @@ const App = () => {
                     likes={item.likes}
                     comments={item.comments}
                     bookmarks={item.bookmarks}
-                    profileImage={item.profilePhoto}
+                    profileImage={item.profileImage}
           />
         )}>
         </FlatList>
-      </NavigationContainer>
     </SafeAreaView>
   );
 }
 
 
-export default App;
+export default Home;
