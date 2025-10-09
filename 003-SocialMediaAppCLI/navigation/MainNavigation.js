@@ -1,11 +1,47 @@
 import {createStackNavigator} from '@react-navigation/stack';
+import {Text} from 'react-native';
 import { Routes } from './Routes';
 import Home from '../screens/Home/Home';
 import Profile from '../screens/Profile/Profile';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import { View } from 'react-native';
 
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()
+const ProfileTabs = createMaterialTopTabNavigator()
+
+const tab1 = () => {
+  return (
+    <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}>
+      <Text>Welcome the Tab1</Text>
+    </View>
+  )
+}
+const tab2 = () => {
+  return (
+    <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}>
+      <Text>Welcome the Tab2</Text>
+    </View>
+  )
+}
+const tab3 = () => {
+  return (
+    <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}>
+      <Text>Welcome the Tab3</Text>
+    </View>
+  )
+}
+
+export const ProfileTabsNavigation = () => {
+  return (
+    <ProfileTabs.Navigator>
+      <ProfileTabs.Screen name={"Tab1"} component={tab1}/>
+      <ProfileTabs.Screen name={"Tab2"} component={tab2}/>
+      <ProfileTabs.Screen name={"Tab3"} component={tab3}/>
+    </ProfileTabs.Navigator>
+  )
+}
 
 const MainMenuNavigation = () => {
   return (
