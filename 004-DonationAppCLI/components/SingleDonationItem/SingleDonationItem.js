@@ -9,11 +9,15 @@ const SingleDonationItem = props => {
   return (
     <View>
       <View>
-        <Badge title={props.badgeTitle} />
+        <View style={style.badge}>
+          <Badge title={props.badgeTitle} />
+        </View>
         <Image style={style.image} source={{uri: props.uri}} />
       </View>
       <Header title={props.donationTitle} type={3} color={"#0A043C"} />
-      <Header title={props.price} type={3} color={"156CF7"} />
+      <View style={style.price}>
+        <Header title={props.price} type={3} color={"#156CF7"} />
+      </View>
     </View>
   )
 }
