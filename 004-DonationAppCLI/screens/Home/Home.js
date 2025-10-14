@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState,useEffect} from "react"
 import { FlatList, Image, Pressable, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -15,7 +15,29 @@ const Home = () => {
   const user = useSelector(state => state.user)
   const categories = useSelector(state => state.categories)
   const dispatch = useDispatch()
-  dispatch(resetToInitialState())
+
+  const [categoryPage, setCategoryPage] = useState(1);
+  const [categoryList, setCategoryList] = useState([])
+  const [istLoadingCategories, setIsLoadingCategories] = useState(false)
+  const categoryPageSize = 4
+
+  useEffect( () => {
+    setIsLoadingCategories(true)
+    setCategoryList(
+      pagination(categories.categories, categoryPage, categoryPageSize)
+    )
+    setCategoryPage(prev=> prev + 1)
+    setIsLoadingCategories(false)
+  }, [])
+
+  const pagination = (items, pageNumber, pageSize) => {
+    const startIndex = (pageNumber - 1) * pageSize
+    const endIndex = startIndex + pageSize
+    if(startIndex >= items.length) {
+      return []
+    }
+    return items.slice(startIndex, endIndex)
+  }
 
   return (
     <SafeAreaView style={[globalStyle.appBackground, globalStyle.flex]}>
@@ -42,9 +64,22 @@ const Home = () => {
         </View>
         <View style={style.categories}>
         <FlatList
+          onEndReachedThreshold={0.5}
+          onEndReached={() => {
+            if(istLoadingCategories) {
+              return
+          }
+            setIsLoadingCategories(true)
+            let newData = pagination(categories.categories, categoryPage, categoryPageSize)
+            if(newData.length > 0) {
+              setCategoryList(prevState => [...prevState, ...newData])
+              setCategoryPage(prevState => prevState + 1)
+          }
+            setIsLoadingCategories(false)
+          }}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={categories.categories}
+          data={categoryList}
           renderItem={({item}) => (
           <View style={style.categoryItem} key={item.categoryId}>
             <Tab
