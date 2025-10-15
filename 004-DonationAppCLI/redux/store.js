@@ -5,7 +5,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import {logger} from "redux-logger"
 import User from "./reducers/User"
 import Categories from "./reducers/Categories"
-import { Donations } from './reducers/Donations';
+import Donations  from './reducers/Donations';
 
 
 const rootReducer = combineReducers({

@@ -9,19 +9,30 @@ import { resetToInitialState } from '../../redux/reducers/User';
 import Search from '../../components/Search/Search';
 import Tab from '../../components/Tab/Tab';
 import { uploadSelectedCategoryId } from '../../redux/reducers/Categories';
+import SingleDonationItem from '../../components/SingleDonationItem/SingleDonationItem';
 
 
 const Home = () => {
+
   const user = useSelector(state => state.user)
   const categories = useSelector(state => state.categories)
-  const dispatch = useDispatch()
   const donations = useSelector(state => state.donations)
-
+  const dispatch = useDispatch()
 
   const [categoryPage, setCategoryPage] = useState(1);
   const [categoryList, setCategoryList] = useState([])
   const [istLoadingCategories, setIsLoadingCategories] = useState(false)
   const categoryPageSize = 4
+
+  const [donationItems, setDonationItems] = useState([])
+
+  useEffect(() => {
+    const items = donations.items.filter(value =>
+      value.categoryIds.includes(categories.selectedCategoryId)
+    )
+    setDonationItems(items)
+  }, [categories.selectedCategoryId]) //selectedcategory her değiştiğinde.
+
 
   useEffect( () => {
     setIsLoadingCategories(true)
@@ -94,6 +105,25 @@ const Home = () => {
         )}
         />
         </View>
+        {donationItems.length > 0 && (
+          <View style={style.donationItemsContainer}>
+            {donationItems.map(value => (
+              <SingleDonationItem
+                onPress={selectedDonationId => {}}
+                uri={value.image}
+                badgeTitle={
+                categories.categories.filter(
+                  val => val.categoryId == categories.selectedCategoryId
+                )[0].name
+                }
+                donationItemId={value.donationItemId}
+                key={value.donationItemId}
+                donationTitle={value.name}
+                price={parseFloat(value.price)}>
+              </SingleDonationItem>
+            ))}
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   )
