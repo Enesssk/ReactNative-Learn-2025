@@ -15,6 +15,8 @@ const Home = () => {
   const user = useSelector(state => state.user)
   const categories = useSelector(state => state.categories)
   const dispatch = useDispatch()
+  const donations = useSelector(state => state.donations)
+
 
   const [categoryPage, setCategoryPage] = useState(1);
   const [categoryList, setCategoryList] = useState([])
