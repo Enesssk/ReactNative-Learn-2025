@@ -108,6 +108,7 @@ const Home = () => {
         {donationItems.length > 0 && (
           <View style={style.donationItemsContainer}>
             {donationItems.map(value => (
+              <View style={style.singleDonationItem}>
               <SingleDonationItem
                 onPress={selectedDonationId => {}}
                 uri={value.image}
@@ -121,7 +122,8 @@ const Home = () => {
                 donationTitle={value.name}
                 price={parseFloat(value.price)}>
               </SingleDonationItem>
-            ))}
+              </View>
+              ))}
           </View>
         )}
       </ScrollView>

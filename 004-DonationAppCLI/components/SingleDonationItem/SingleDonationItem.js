@@ -13,7 +13,7 @@ const SingleDonationItem = props => {
         <View style={style.badge}>
           <Badge title={props.badgeTitle} />
         </View>
-        <Image style={style.image} source={{uri: props.uri}} />
+        <Image style={style.image} source={{uri: props.uri}} resizeMode={"cover"} />
       </View>
       <Header title={props.donationTitle} type={3} color={"#0A043C"} />
       <View style={style.price}>
