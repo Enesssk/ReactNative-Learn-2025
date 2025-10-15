@@ -203,7 +203,8 @@ const initialState = {
       price: '13.83',
     },
   ],
-  selectedDonationId: null
+  selectedDonationId: null,
+  selectedDonationInformation: null
 }
 
 export const Donations = createSlice({
@@ -215,6 +216,9 @@ export const Donations = createSlice({
     },
     updateSelectedDonationId: (state, action) => {
       state.selectedDonationId = action.payload;
+      state.selectedDonationInformation = state.items.find(
+        item => item.donationItemId === action.payload,
+      )
 }
   }
   }
