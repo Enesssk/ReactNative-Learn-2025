@@ -109,28 +109,32 @@ const Home = ({navigation}) => {
         </View>
         {donationItems.length > 0 && (
           <View style={style.donationItemsContainer}>
-            {donationItems.map(value => (
-              <View style={style.singleDonationItem}>
+            {donationItems.map(value => {
+              const categoryInformation = categories.categories.find(
+                val => val.categoryId == categories.selectedCategoryId
+              )
+              return (
+              <View
+                key={value.donationItemId}
+                style={style.singleDonationItem}>
               <SingleDonationItem
                 onPress={selectedDonationId => {
                   dispatch(updateSelectedDonationId(selectedDonationId))
-                  navigation.navigate(Routes.SingleDonationItem)
+                  navigation.navigate(Routes.SingleDonationItem, {
+                    categoryInformation,
+                  })
                 }}
                 uri={value.image}
-                badgeTitle={
-                categories.categories.filter(
-                  val => val.categoryId == categories.selectedCategoryId
-                )[0].name
-                }
+                badgeTitle={categoryInformation.name}
                 donationItemId={value.donationItemId}
-                key={value.donationItemId}
                 donationTitle={value.name}
                 price={parseFloat(value.price)}>
               </SingleDonationItem>
               </View>
-              ))}
+              )
+            })}
           </View>
-        )}
+            )}
       </ScrollView>
     </SafeAreaView>
   )
