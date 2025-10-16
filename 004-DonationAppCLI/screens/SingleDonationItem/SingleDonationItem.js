@@ -22,7 +22,7 @@ const SingleDonationItem = ({navigation, route}) => {
         <View style={style.badge}>
           <Badge title={categoryInformation.name}/>
         </View>
-        <Header type={1} title={donationItemInformation.title}/>
+        <Header type={1} title={donationItemInformation.title}/> 
         <Text style={style.description}>
           {donationItemInformation.description}
           {donationItemInformation.description}
