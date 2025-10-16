@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { horizontalScale } from './scaling';
+import { horizontalScale, verticalScale } from './scaling';
 
 const globalStyle = StyleSheet.create({
   appBackground: {
@@ -12,7 +12,10 @@ const globalStyle = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: horizontalScale(16)
-  }
+  } ,
+  marginBottom24: {
+    marginBottom: verticalScale(24),
+  },
 });
 
 export default globalStyle;
