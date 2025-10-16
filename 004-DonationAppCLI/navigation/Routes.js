@@ -3,5 +3,6 @@ import SingleDonationItem from '../screens/SingleDonationItem/SingleDonationItem
 export const Routes = {
   Home: "Home",
   SingleDonationItem: "SingleDonationItem",
-  Login: "Login"
+  Login: "Login",
+  Registration: "Registration"
 }
