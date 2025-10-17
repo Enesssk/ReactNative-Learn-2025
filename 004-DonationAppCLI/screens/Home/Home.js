@@ -67,7 +67,7 @@ const Home = ({navigation}) => {
           <Image style={style.profileImage} source={{uri: user.image}}/>
         </View>
         <View style={style.searchBox}>
-          <Search />
+          <Search placeholder={"Search..."}/>
         </View>
         <Pressable style={style.highlightedImageContainer}>
           <Image style={style.highlightedImage}

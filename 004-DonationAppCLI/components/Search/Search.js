@@ -23,7 +23,7 @@ const Search = props => {
     <Pressable style={style.searchInputContainer} onPress={handleFocus}>
       <FontAwesomeIcon icon={faSearch} color={"#25C0FF"} size={scaleFontSize(22)}/>
       <TextInput
-        placeHolder={props.placeHolder}
+        placeholder={props.placeholder}
         style={style.textInput}
         ref = {textInputRef}
         value={search}
@@ -35,12 +35,11 @@ const Search = props => {
 
 Search.defaultProps = {
   onSearch: () => {},
-  placeHolder: "Search"
 }
 
 Search.propTypes = {
   onSearch: PropTypes.func,
-  placeHolder: PropTypes.string
+  placeholder: PropTypes.string.isRequired
 }
 
 export default Search
