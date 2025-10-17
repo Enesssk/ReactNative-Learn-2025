@@ -1,11 +1,12 @@
 import React, {useState} from "react"
-import { Pressable, SafeAreaView, ScrollView, Text, View, Button } from 'react-native';
+import { Pressable, SafeAreaView, ScrollView, Text, View, } from 'react-native';
 import Input from "../../components/Input/Input"
 
 import style from "./style"
 import globalStyle from "../../assets/styles/globalStyle"
 import Header from '../../components/Header/Header';
 import BackButton from '../../components/BackButton/BackButton';
+import Button from "../../components/Button/Button"
 import { createUser } from '../../api/user';
 
 
