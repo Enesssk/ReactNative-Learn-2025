@@ -1,18 +1,20 @@
 import React, {useState} from "react"
-import { Pressable, SafeAreaView, ScrollView, View } from 'react-native';
+import { Pressable, SafeAreaView, ScrollView, Text, View, Button } from 'react-native';
 import Input from "../../components/Input/Input"
 
 import style from "./style"
 import globalStyle from "../../assets/styles/globalStyle"
 import Header from '../../components/Header/Header';
-import Button from '../../components/Button/Button';
 import BackButton from '../../components/BackButton/BackButton';
+import { createUser } from '../../api/user';
 
 
 const Registration = ({navigation}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [fullName, setFullName] = useState("")
+  const [success, setSuccess] = useState("")
+  const [error, setError] = useState("")
 
   return (
     <SafeAreaView style={[globalStyle.appBackground, globalStyle.flex]}>
@@ -48,13 +50,27 @@ const Registration = ({navigation}) => {
         <Input
           label={"Password"}
           placeHolder={"Enter your password..."}
+          secureTextEntry={true}
           onChangeText={value => {
             setPassword(value)
           }}
         />
         </View>
+        {error.length > 0 && <Text style={style.error}>{error}</Text>}
+        {success.length > 0 && <Text style={style.success}>{success}</Text>}
         <View style={globalStyle.marginBottom24}>
-          <Button title={"Registration"} />
+          <Button title={"Registration"}
+                  onPress={async () => {
+                    const user = await createUser(fullName, email, password)
+                    if(user.error) {
+                      setError(user.error)
+                      console.log("Auth error", user.error)
+                    } else {
+                      setError('')
+                      setSuccess("You have successfully registered")
+                      setTimeout(() => navigation.goBack(), 3000)
+                    }
+                  }} />
         </View>
       </ScrollView>
     </SafeAreaView>
