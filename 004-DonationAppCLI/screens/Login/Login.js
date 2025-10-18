@@ -60,7 +60,6 @@ const Login = ({navigation}) => {
                 setError('');
                 setSuccess('Login is successfully');
                 dispatch(logIn(user.data))
-                setTimeout(() => navigation.navigate(Routes.Home), 3000);
               }
             }}
           />

@@ -12,6 +12,7 @@ import { uploadSelectedCategoryId } from '../../redux/reducers/Categories';
 import SingleDonationItem from '../../components/SingleDonationItem/SingleDonationItem';
 import { updateSelectedDonationId } from '../../redux/reducers/Donations';
 import { Routes } from '../../navigation/Routes';
+import { logOut } from '../../api/user';
 
 
 const Home = ({navigation}) => {
@@ -64,7 +65,15 @@ const Home = ({navigation}) => {
               <Header title={user.displayName + '.👋'} type={1}/>
             </View>
           </View>
-          <Image style={style.profileImage} source={{uri: user.image}}/>
+          <View>
+            <Image style={style.profileImage} source={{uri: user.image}}/>
+            <Pressable onPress={async () => {
+              dispatch(resetToInitialState())
+              await logOut()
+            }}>
+              <Header title={"Logout"} type={3} color={"#156CF7"}/>
+            </Pressable>
+          </View>
         </View>
         <View style={style.searchBox}>
           <Search placeholder={"Search..."}/>
