@@ -61,7 +61,7 @@ const Home = ({navigation}) => {
           <View>
             <Text style={style.headerIntroText}>Hello,</Text>
             <View style={style.username}>
-              <Header title={user.firstName + ' ' + user.lastName[0] + '.👋'} type={1}/>
+              <Header title={user.displayName + '.👋'} type={1}/>
             </View>
           </View>
           <Image style={style.profileImage} source={{uri: user.image}}/>
