@@ -1,0 +1,15 @@
+# React Native build ve bağımlılık klasörlerini yoksay
+node_modules/
+android/
+ios/
+build/
+.gradle/
+.idea/
+.vscode/
+.env
+.DS_Store
+.expo/
+.expo-shared/
+npm-debug.log
+yarn-error.log
+

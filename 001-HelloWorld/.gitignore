@@ -1,0 +1,24 @@
+# Node
+node_modules/
+
+# React Native
+*.log
+*.lock
+.expo
+.bundle
+.expo-shared
+npm-debug.*
+
+# Xcode
+ios/Pods/
+ios/build/
+ios/DerivedData/
+
+# Android
+android/.gradle/
+android/app/build/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.iml
