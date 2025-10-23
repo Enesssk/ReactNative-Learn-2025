@@ -1,11 +1,9 @@
 import React from "react"
-import {SafeAreaView, Text} from "react-native"
+import Home from './screens/Home/Home';
 
 const App = () => {
   return (
-    <SafeAreaView>
-        <Text>Hello World!</Text>
-    </SafeAreaView>
+    <Home/>
   );
 }
 
