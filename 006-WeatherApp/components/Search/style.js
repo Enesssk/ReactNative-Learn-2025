@@ -21,6 +21,31 @@ const style = StyleSheet.create({
     marginHorizontal: horizontalScale(16),
     marginTop: verticalScale(16)
   },
+  locationContainer: {
+    width: '90%',
+    backgroundColor: "#FFFFFF",
+    borderRadius: horizontalScale(14),
+    alignItems: "center",
+    marginHorizontal: horizontalScale(16),
+    marginTop: verticalScale(8),
+  },
+  locationText: {
+    fontSize: scaleFontSize(18),
+    fontWeight: "normal",
+    color: "black",
+    paddingVertical: verticalScale(4),
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 1,
+    width: '100%',
+    textAlign: 'left',
+    marginLeft: horizontalScale(8),
+  },
+  locationRow: {
+    flexDirection: 'row',
+    marginHorizontal: horizontalScale(16),
+    alignItems: "center",
+    marginVertical: verticalScale(4)
+  }
 })
 
 export default style

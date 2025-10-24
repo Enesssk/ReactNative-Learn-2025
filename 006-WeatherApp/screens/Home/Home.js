@@ -1,6 +1,6 @@
-import React from "react"
+import React, {useState} from "react"
 import style from "./style"
-import { SafeAreaView, Text, View, Image, StatusBar, ScrollView } from 'react-native';
+import { SafeAreaView, Text, View, Image, ScrollView } from 'react-native';
 import Search from '../../components/Search/Search';
 import { horizontalScale, scaleFontSize } from '../../assets/scaling';
 import globalStyle from "../../assets/globalstyle"
@@ -8,7 +8,7 @@ import globalStyle from "../../assets/globalstyle"
 const Home = () => {
   return (
     <SafeAreaView style={[globalStyle.flex, globalStyle.backgroundColor]}>
-      <Search placeHolder={"Search.."}/>
+        <Search placeHolder={"Search.."}/>
       <View style={style.cityNameContainer}>
         <Text style={style.cityNameText}>London,</Text>
         <Text style={style.countryNameText}>United Kondom</Text>
@@ -33,13 +33,13 @@ const Home = () => {
       <View style={style.iconTextContainer}>
         <Image
           style={style.icon}
-          source={require("../../assets/images/drop.png")}/>
+          source={require("../../assets/images/wind.png")}/>
         <Text style={style.iconTextMargin}>23%</Text>
       </View>
       <View style={style.iconTextContainer}>
         <Image
           style={style.icon}
-          source={require("../../assets/images/sun.png")}/>
+          source={require("../../assets/images/wind.png")}/>
         <Text style={style.iconTextMargin}>6.05 A.M.</Text>
       </View>
       </View>

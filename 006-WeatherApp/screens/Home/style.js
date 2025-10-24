@@ -22,7 +22,7 @@ const style = StyleSheet.create({
     color: "gray",
   },
   todayImageContainer: {
-    marginTop: verticalScale(30),
+    marginTop: verticalScale(25),
     alignItems: "center"
   },
   todayImage: {
@@ -44,7 +44,7 @@ const style = StyleSheet.create({
     marginTop: verticalScale(8),
   },
   todayDegreeContainer: {
-    marginTop: verticalScale(30),
+    marginTop: verticalScale(25),
   },
   icon: {
     height: verticalScale(30),
@@ -54,7 +54,7 @@ const style = StyleSheet.create({
   iconContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: verticalScale(24),
+    marginTop: verticalScale(20),
     marginHorizontal: horizontalScale(24),
   },
   iconTextContainer: {
