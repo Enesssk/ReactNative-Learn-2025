@@ -22,12 +22,14 @@ const Search = props => {
     console.log("location:", loc)
     setLocations([]) // önceki locationları sıfırladım.
     setSearch([])
+    props.onLoading(true)
     fetchWeatherForecast({
       cityName: loc.name,
       days: "6"
     }).then(data => {
       console.log("got data:", data)
       props.onSearchComplete(data)
+      props.onLoading(false)
     })
   }
 
@@ -87,7 +89,8 @@ const Search = props => {
 
 Search.propTypes = {
   placeHolder: PropTypes.string.isRequired,
-  onSearchComplete: PropTypes.func.isRequired
+  onSearchComplete: PropTypes.func.isRequired,
+  onLoading: PropTypes.bool.isRequired, //search yapınca loading.
 }
 
 export default Search
