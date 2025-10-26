@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import {
-  horizontalScale,
+  horizontalScale, movieScreenImageHeight,
   scaleFontSize,
   verticalScale,
 } from '../../assets/styles/scaling';
@@ -10,7 +10,8 @@ const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginLeft: horizontalScale(16),
-    marginTop: verticalScale(16)
+    marginTop: verticalScale(16),
+    marginRight: horizontalScale(8),
   },
   titleText: {
     fontSize: scaleFontSize(20),
@@ -34,7 +35,7 @@ const style = StyleSheet.create({
   },
   movieImage: {
     width: horizontalScale(120),
-    height: verticalScale(180),
+    height: 200,
     borderRadius: horizontalScale(24),
     resizeMode: "cover",
     marginTop: verticalScale(12),

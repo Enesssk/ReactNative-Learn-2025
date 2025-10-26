@@ -31,5 +31,7 @@ const guidelineBaseFonts = () => {
   return 400
 }
 const scaleFontSize = size => Math.round((width/guidelineBaseFonts())* size)
+export const movieScreenImageHeight = height*0.40
+export const movieScreenTextHeight = height*0.09
 
 export {horizontalScale, verticalScale, scaleFontSize}
