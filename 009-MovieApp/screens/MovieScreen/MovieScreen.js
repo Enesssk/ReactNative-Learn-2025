@@ -16,11 +16,15 @@ import style from "./style"
 import globalStyle from '../../assets/styles/globalStyle';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import Cast from '../../components/Cast/Cast';
+import MovieList from '../../components/MovieList/MovieList';
 
 const movieScreen = () => {
   const navigation = useNavigation();
   const [isFavorite, setIsFavorite] = useState(false);
   let movieName = "Ant-Man and The MovieLion"
+  const [cast, setCast] = useState([1,2,3,4,5]);
+  const [similar, setSimilar] = useState([1,2,3,4,5]);
 
   return (
     <SafeAreaView style={[globalStyle.flex, globalStyle.appBackground]}>
@@ -71,7 +75,13 @@ const movieScreen = () => {
         {/*description*/}
         <View style={style.descContainer}>
           <Text style={style.descText}>AHSDHASDHSAHDSADHSHAASDBASJDBKAJSDBSALBASKDBASBDKASBKDASKBDAKBSDABKDASHDSHasjhdjasjsdaAHDHA</Text>
-        </View>
+        </View>,
+
+        {/*cast*/}
+        <Cast data={cast}/>
+
+        {/*similarMovies*/}
+        <MovieList title={"Similar Movies"} data={similar} hideSeeAll={true}/>
       </ScrollView>
     </SafeAreaView>
   )

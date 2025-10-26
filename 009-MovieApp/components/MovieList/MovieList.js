@@ -14,14 +14,15 @@ const MovieList = props => {
   const data = Array.isArray(props.data) ? props.data : [] //props.data arraysa göster değilse boş liste göster dedim. Güvenlik.
 
   const handleClick = (item) => {
-    navigation.navigate(Routes.MovieScreen,item)
+    navigation.push(Routes.MovieScreen,item)
   }
 
   return (
     <View>
       <View style={style.topContainer}>
         <Text style={style.titleText}>{props.title}</Text>
-        <Text style={style.seeAllText}>See All</Text>
+        {props.hideSeeAll ? null : <Text style={style.seeAllText}>See All</Text>
+        }
       </View>
       <ScrollView
       horizontal={true}
@@ -55,6 +56,7 @@ const MovieList = props => {
 
 MovieList.propTypes = {
   title: PropTypes.string.isRequired,
+  hideSeeAll: PropTypes.bool,
   data: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
