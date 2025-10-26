@@ -3,11 +3,18 @@ import PropTypes from "prop-types"
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import globalStyle from '../../assets/styles/globalStyle';
 import style from "./style"
+import { useNavigation } from '@react-navigation/native';
+import { Routes } from '../../navigation/Routes';
 
 const Cast = props => {
   let characterName = "John Wick"
   let personName = "Keanu Reeves"
   const data = Array.isArray(props.data) ? props.data : [] //props.data arraysa göster değilse boş liste göster dedim. Güvenlik.
+  const navigation = useNavigation();
+
+  const handleClick = (person) => {
+    navigation.navigate(Routes.Person, person)
+  }
 
   return (
     <View style={style.topContainer}>
@@ -21,6 +28,7 @@ const Cast = props => {
           return(
             <TouchableOpacity
               key={index}
+              onPress={() => handleClick(person)}
             >
               <View style={style.castContainer}>
                 <View style={style.imageContainer}>
