@@ -21,6 +21,7 @@ const style = StyleSheet.create({
     width: "100%",
     height: "100%",
     resizeMode: "cover",
+    borderRadius: horizontalScale(24)
   },
 })
 
