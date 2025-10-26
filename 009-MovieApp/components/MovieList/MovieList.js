@@ -4,11 +4,19 @@ import PropTypes from "prop-types"
 
 import style from "./style"
 import globalStyle from '../../assets/styles/globalStyle';
+import { Routes } from '../../navigation/Routes';
+import { useNavigation } from '@react-navigation/native';
 
 let movieName = "Ant-Man and The MovieLion"
 
 const MovieList = props => {
+  const navigation = useNavigation();
   const data = Array.isArray(props.data) ? props.data : [] //props.data arraysa göster değilse boş liste göster dedim. Güvenlik.
+
+  const handleClick = (item) => {
+    navigation.navigate(Routes.MovieScreen,item)
+  }
+
   return (
     <View>
       <View style={style.topContainer}>
@@ -25,6 +33,7 @@ const MovieList = props => {
               <TouchableWithoutFeedback
                 key={index}
                 //ONPRESS.
+                onPress={() => handleClick(item)}
               >
                 <View style={style.movieListContainer}>
                   <Image

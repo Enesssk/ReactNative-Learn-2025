@@ -1,3 +1,5 @@
+
 export const Routes = {
-  Home: "Home"
+  Home: "Home",
+  MovieScreen: "MovieScreen",
 }
