@@ -10,6 +10,11 @@ const globalStyles = StyleSheet.create({
   },
   scrollViewStyle: {
     paddingBottom: verticalScale(10),
+  },
+  loading: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   }
 })
 
