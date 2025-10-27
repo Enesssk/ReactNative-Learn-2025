@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { scaleFontSize } from '../../assets/styles/scaling';
 
@@ -8,11 +8,14 @@ import style from "./style"
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import Trending from '../../components/Trending/Trending';
 import MovieList from '../../components/MovieList/MovieList';
+import { useNavigation } from '@react-navigation/native';
+import { Routes } from '../../navigation/Routes';
 
 const Home = () => {
   const [trending, setTrending] = useState([1,2,3])
   const [upcoming, setUpcoming] = useState([1,2,3])
   const [topRated, setTopRated] = useState([1,2,3])
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={[globalStyle.flex, globalStyle.appBackground]}>
@@ -22,7 +25,9 @@ const Home = () => {
           <Text style={style.topTitleFirstWText}>M</Text>
           ovies
         </Text>
-        <FontAwesomeIcon icon={faSearch} size={scaleFontSize(28)} color={"white"}/>
+        <TouchableOpacity onPress={() => navigation.navigate(Routes.Search)}>
+          <FontAwesomeIcon icon={faSearch} size={scaleFontSize(28)} color={"white"}/>
+        </TouchableOpacity>
       </View>
       <ScrollView
       showsVerticalScrollIndicator={false}

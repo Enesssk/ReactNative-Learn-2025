@@ -5,6 +5,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   useWindowDimensions,
+  TouchableOpacity,
 } from 'react-native';
 import PropTypes from "prop-types"
 
@@ -55,7 +56,7 @@ const MovieCard = ({item, handleClick}) => {
   const CARD_HEIGHT = 300;
 
   return (
-    <TouchableWithoutFeedback
+    <TouchableOpacity
     onPress={() => handleClick(item)}
     >
       <View style={{width: screenWidth, alignItems: "center"}}>
@@ -69,7 +70,7 @@ const MovieCard = ({item, handleClick}) => {
           />
         </View>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   )
 }
 

@@ -1,5 +1,12 @@
 import React from "react"
-import { View, Text, ScrollView, TouchableWithoutFeedback, Image } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import PropTypes from "prop-types"
 
 import style from "./style"
@@ -31,7 +38,7 @@ const MovieList = props => {
         {
           data.map((item, index) => { //her item ve key için index.
             return (
-              <TouchableWithoutFeedback
+              <TouchableOpacity
                 key={index}
                 //ONPRESS.
                 onPress={() => handleClick(item)}
@@ -45,7 +52,7 @@ const MovieList = props => {
                     movieName.length >= 14 ? movieName.slice(0,14) + "..." : movieName
                   }</Text>
                 </View>
-              </TouchableWithoutFeedback>
+              </TouchableOpacity>
             )
         })
         }
