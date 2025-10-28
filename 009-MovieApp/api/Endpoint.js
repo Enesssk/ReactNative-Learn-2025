@@ -14,6 +14,10 @@ export const personEndpoint = id => `${BASE_URL}/person/${id}?api_key=${API_KEY}
 //PersonMoviesCredit
 export const personMoviesCreditEndpoint = id => `${BASE_URL}/person/${id}/movie_credits?api_key=${API_KEY}`
 
+//SearchMovie
+export const searchMovieEndpoint = query =>
+  `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&include_adult=false&page=1&query=${encodeURIComponent(query)}`
+
 //for image.
 export const getImages500 = path => path ? `https://image.tmdb.org/t/p/w500${path}` : null
 export const getImages342 = path => path ? `https://image.tmdb.org/t/p/w342${path}` : null
