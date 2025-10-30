@@ -5,10 +5,9 @@ import globalStyle from '../../assets/styles/globalStyle';
 import style from "./style"
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from '../../navigation/Routes';
+import { getImages342 } from '../../api/Endpoint';
 
 const Cast = props => {
-  let characterName = "John Wick"
-  let personName = "Keanu Reeves"
   const data = Array.isArray(props.data) ? props.data : [] //props.data arraysa göster değilse boş liste göster dedim. Güvenlik.
   const navigation = useNavigation();
 
@@ -32,15 +31,21 @@ const Cast = props => {
             >
               <View style={style.castContainer}>
                 <View style={style.imageContainer}>
-                  <Image source={require("../../assets/images/trendingimage.png")}
+                  <Image source={{uri: getImages342(person.profile_path)}}
                          style={style.image}/>
                 </View>
                 <Text style={style.descText}>{
-                  characterName.length >= 10 ? characterName.slice(0,10) + "..." : characterName
-                }</Text>
+                  (person.title || person.name)
+                    ? ((person.title || person.name).length >= 8
+                      ? (person.title || person.name).slice(0, 8) + "..."
+                      : (person.title || person.name))
+                    : "No Title"}</Text>
                 <Text style={style.descText}>{
-                  personName.length >= 10 ? personName.slice(0,10) + "..." : personName
-                }</Text>
+                  (person.character)
+                    ? ((person.character).length >= 8
+                      ? (person.character).slice(0, 8) + "..."
+                      : (person.character))
+                    : "No Title"}</Text>
               </View>
             </TouchableOpacity>
           )

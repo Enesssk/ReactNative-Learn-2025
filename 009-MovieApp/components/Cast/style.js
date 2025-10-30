@@ -11,8 +11,9 @@ const style = StyleSheet.create({
   },
   image: {
     width: horizontalScale(80),
-    height: horizontalScale(100),
-    borderRadius: horizontalScale(20)
+    height: horizontalScale(80),
+    borderRadius: horizontalScale(30),
+    resizeMode: "cover",
   },
   topContainer: {
     marginLeft: horizontalScale(16),
