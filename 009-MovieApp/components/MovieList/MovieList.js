@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -12,9 +12,9 @@ import PropTypes from "prop-types"
 import style from "./style"
 import globalStyle from '../../assets/styles/globalStyle';
 import { Routes } from '../../navigation/Routes';
-import { useNavigation } from '@react-navigation/native';
-
-let movieName = "Ant-Man and The MovieLion"
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { getImages342 } from '../../api/Endpoint';
+import { getMovieDetailsWithId } from '../../api/Service/movieService';
 
 const MovieList = props => {
   const navigation = useNavigation();
@@ -45,12 +45,15 @@ const MovieList = props => {
               >
                 <View style={style.movieListContainer}>
                   <Image
-                    source={require("../../assets/images/trendingimage.png")}
+                    source={{uri: getImages342(item.poster_path)}}
                     style={style.movieImage}
                   />
                   <Text style={style.movieNameText}>{
-                    movieName.length >= 14 ? movieName.slice(0,14) + "..." : movieName
-                  }</Text>
+                    (item.title || item.name)
+                      ? ((item.title || item.name).length >= 8
+                        ? (item.title || item.name).slice(0, 8) + "..."
+                        : (item.title || item.name))
+                      : "No Title"                  }</Text>
                 </View>
               </TouchableOpacity>
             )
@@ -68,8 +71,7 @@ MovieList.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       image: PropTypes.oneOfType([
-        PropTypes.number,
-        //PropTypes.shape({uri: PropTypes.string.isRequired}),//burası uri olacak. verileri çekince.
+        PropTypes.shape({uri: PropTypes.string.isRequired}), //burası uri olacak. verileri çekince.
     ]).isRequired,
   })
   ).isRequired,
