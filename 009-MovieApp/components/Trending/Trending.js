@@ -13,13 +13,14 @@ import style from "./style"
 import Carousel from "react-native-reanimated-carousel";
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from '../../navigation/Routes';
+import { getImages500 } from '../../api/Endpoint';
 
 const Trending = props => {
   const navigation = useNavigation();
   const { width: screenWidth } = useWindowDimensions();
 
   const CARD_WIDTH  = Math.round(screenWidth * 0.68); // kart: ekranın %60–70'i.
-  const CARD_HEIGHT = 300;
+  const CARD_HEIGHT = 400;
   const SIDE_PEEK = Math.round((screenWidth - CARD_WIDTH));
 
   const handleClick = (item) => {
@@ -51,9 +52,10 @@ const Trending = props => {
 }
 
 const MovieCard = ({item, handleClick}) => {
+  console.log("item.poster_path", item.poster_path)
   const { width: screenWidth } = useWindowDimensions();
   const CARD_WIDTH  = Math.round(screenWidth * 0.68); // kart: ekranın %60–70'i
-  const CARD_HEIGHT = 300;
+  const CARD_HEIGHT = 400;
 
   return (
     <TouchableOpacity
@@ -66,7 +68,7 @@ const MovieCard = ({item, handleClick}) => {
         }}>
           <Image
             style={style.trendingImage}
-            source={require("../../assets/images/trendingimage.png")}
+            source={{uri: getImages500(item.poster_path)}}
           />
         </View>
       </View>
