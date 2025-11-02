@@ -35,11 +35,12 @@ const style = StyleSheet.create({
     fontWeight: "bold",
   },
   imageContainer: {
-    marginLeft: horizontalScale(16),
+    width: horizontalScale(160), // sabit genişlik
     marginTop: verticalScale(16),
+    alignItems: "center", // yatayda ortalama
   },
   image: {
-    width: horizontalScale(150),
+    width: "100%",
     height: verticalScale(190),
     borderRadius: horizontalScale(24),
     resizeMode: "cover",
@@ -50,7 +51,7 @@ const style = StyleSheet.create({
     color: "white",
     fontWeight: "normal",
     marginTop: verticalScale(4),
-    textAlign: "left"
+    textAlign: "center",
   },
   noMatchedText: {
     fontSize: scaleFontSize(20),
@@ -62,6 +63,7 @@ const style = StyleSheet.create({
   gridContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "space-evenly",
   }
 })
 
