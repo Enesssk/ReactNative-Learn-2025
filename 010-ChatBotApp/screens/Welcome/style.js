@@ -28,7 +28,7 @@ const style = StyleSheet.create({
   },
   button: {
     borderRadius: horizontalScale(20),
-    backgroundColor: "#5b18e1",
+    backgroundColor: "#0fc0dc",
     width: "90%",
     height: verticalScale(50),
     marginTop: verticalScale(5),
