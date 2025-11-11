@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { verticalScale } from './scaling';
 
 const globalStyle = StyleSheet.create({
   flex: {
@@ -6,7 +7,10 @@ const globalStyle = StyleSheet.create({
   },
   appBackground: {
     backgroundColor: 'white',
-  }
+  },
+  scrollViewStyle: {
+    paddingBottom: verticalScale(10),
+  },
 })
 
 export default globalStyle

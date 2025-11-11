@@ -1,13 +1,13 @@
 import React from "react"
 import { Image, SafeAreaView, Text, View } from 'react-native';
+import PropTypes from "prop-types"
 import style from './style';
 
-const Features = () => {
+const Features = props => {
   return (
     <View>
-
       {/*Title*/}
-      <Text style={style.titleText}>Features</Text>
+      <Text style={style.titleText}>{props.title}</Text>
 
       {/*Features*/}
       <View style={style.featuresContainer}>
@@ -16,37 +16,52 @@ const Features = () => {
           <View style={style.chatgptTitleContainer}>
             <Image
               style={style.featuresIcon}
-              source={require("../../assets/images/welcomeimage.png")}/>
+              source={require('../../assets/images/welcomeimage.png')}
+            />
             <Text style={style.featuresTitle}>ChatGpt</Text>
           </View>
-          <Text style={style.featuresDescText}>Chatgpt can provide you with instant and knowledgeable responses, assist you with creative ideas on a wide range of topics </Text>
+          <Text style={style.featuresDescText}>
+            Chatgpt can provide you with instant and knowledgeable responses,
+            assist you with creative ideas on a wide range of topics{' '}
+          </Text>
         </View>
 
-      {/*DALL-E Features*/}
-      <View style={style.dallEContainer}>
-        <View style={style.chatgptTitleContainer}>
-          <Image
-            style={style.featuresIcon}
-            source={require("../../assets/images/welcomeimage.png")}/>
-          <Text style={style.featuresTitle}>DALL-E</Text>
+        {/*DALL-E Features*/}
+        <View style={style.dallEContainer}>
+          <View style={style.chatgptTitleContainer}>
+            <Image
+              style={style.featuresIcon}
+              source={require('../../assets/images/welcomeimage.png')}
+            />
+            <Text style={style.featuresTitle}>DALL-E</Text>
+          </View>
+          <Text style={style.featuresDescText}>
+            DALL-E can generate imaginative and diverse images from textual
+            descriptions, expanding the boundaries of visual creativity.
+          </Text>
         </View>
-        <Text style={style.featuresDescText}>DALL-E can generate imaginative and diverse images from textual descriptions, expanding the boundaries of visual creativity.</Text>
+
+        {/*Smart AI Features*/}
+        <View style={style.smartAIContainer}>
+          <View style={style.chatgptTitleContainer}>
+            <Image
+              style={style.featuresIcon}
+              source={require('../../assets/images/welcomeimage.png')}
+            />
+            <Text style={style.featuresTitle}>Smart AI</Text>
+          </View>
+          <Text style={style.featuresDescText}>
+            A powerful voice assistant with the abilities of ChatGPT and DALL-E,
+            providing ypu the best of both worlds.
+          </Text>
+        </View>
       </View>
-
-      {/*Smart AI Features*/}
-      <View style={style.smartAIContainer}>
-        <View style={style.chatgptTitleContainer}>
-          <Image
-            style={style.featuresIcon}
-            source={require("../../assets/images/welcomeimage.png")}/>
-          <Text style={style.featuresTitle}>Smart AI</Text>
-        </View>
-        <Text style={style.featuresDescText}>A powerful voice assistant with the abilities of ChatGPT and DALL-E, providing ypu the best of both worlds.</Text>
-      </View>
-
     </View>
-      </View>
-  )
+  );
+}
+
+Features.propTypes = {
+  title: PropTypes.string.isRequired,
 }
 
 export default Features;
