@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import PropTypes from "prop-types"
 import style from '../../screens/Home/style';
@@ -6,6 +6,15 @@ import globalStyle from '../../assets/styles/globalStyle';
 
 const Assistants = props => {
   const data = Array.isArray(props.data) ? props.data : []
+  const scrollViewRef = useRef(null)
+
+  //for scrollview.
+   const updateScrollView = () => {
+    setTimeout(() => {
+      scrollViewRef.current?.scrollToEnd({animated: true})
+    },200)
+  }
+
   return (
     <View>
       <Text style={style.titleText}>Assistant</Text>
@@ -13,11 +22,12 @@ const Assistants = props => {
         style={style.assistantBackgroundContainer}>
         <ScrollView
           showsVerticalScrollIndicator={false}
+          //ref={scrollViewRef}
           contentContainerStyle={globalStyle.scrollViewStyle}>
           {
             data.map((item, index) => {
               if(item.role == "assistant") {
-                if(item.content.includes("https")) {
+                if(item.content && item.content.includes("https")) {
                   //its an ai image
                   return (
                     <View

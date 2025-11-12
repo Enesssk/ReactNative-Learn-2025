@@ -29,12 +29,12 @@ const style = StyleSheet.create({
   userContainer: {
     backgroundColor: "white",
     width: "60%",
-    height: verticalScale(35),
     borderRadius: horizontalScale(10),
     marginVertical: verticalScale(10),
     alignSelf: "flex-end",
     justifyContent: "center",
     marginEnd: horizontalScale(8),
+    padding: horizontalScale(4)
   },
   userText: {
     fontSize: scaleFontSize(16),
@@ -42,16 +42,17 @@ const style = StyleSheet.create({
     color: "black",
     textAlign: "left",
     marginHorizontal: horizontalScale(4),
+    flexWrap: "wrap"
   },
   assistantContainer: {
     backgroundColor: "#17f1f1",
     width: "60%",
-    height: verticalScale(35),
     borderRadius: horizontalScale(10),
     marginVertical: verticalScale(10),
     alignSelf: "flex-start",
     justifyContent: "center",
     marginStart: horizontalScale(8),
+    padding: horizontalScale(4)
   },
   assistantImageContainer: {
     width: horizontalScale(130),
