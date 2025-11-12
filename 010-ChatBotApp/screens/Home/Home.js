@@ -1,4 +1,4 @@
-import React, { useState, } from "react"
+import React, { useEffect, useState } from 'react';
 import {
   Image, Pressable,
   SafeAreaView,
@@ -13,11 +13,13 @@ import globalStyle from '../../assets/styles/globalStyle';
 import Features from '../../components/Features/Features';
 import { initialMessageList } from '../../constants';
 import Assistants from '../../components/Assistants/Assistants';
+import Voice from '@react-native-voice/voice';
+import useVoice from '../../hooks/useVoice';
 
 const Home = () => {
   const [message, setMessage] = useState(initialMessageList);
-  const [recording, setRecording] = useState(false);
   const [speaking, setSpeaking] = useState(true);
+  const {recording, result, start, stop} = useVoice()
 
   const clearAssistant = () => {
     setMessage([])
@@ -61,22 +63,21 @@ const Home = () => {
 
         {/*Microphone*/}
       {
-        recording? (
-          <View style={style.iconContainer}>
+          <TouchableOpacity
+            //if recording true, i am showing uri, if its false => png.
+            onPress={recording ? stop : start }
+            style={style.iconContainer}>
             <Image
               style={style.micIcon}
-              source={{uri: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3N5M21sODJjeGVoYTV6N3IzNTRvbnUyNHBmbXF6N2xkM2hmbGR5cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o1YuwnczQIcc3ZGlbq/giphy.gif"}}
-            />
-          </View>
-        ): (
-          //recording false
-          <TouchableOpacity style={style.iconContainer}>
-            <Image
-              style={style.micIcon}
-              source={require("../../assets/images/micicon.png")}
+              source=
+                {
+              recording ?
+                {uri: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3N5M21sODJjeGVoYTV6N3IzNTRvbnUyNHBmbXF6N2xkM2hmbGR5cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o1YuwnczQIcc3ZGlbq/giphy.gif"}
+                  : require('../../assets/images/micicon.png')
+                }
             />
           </TouchableOpacity>
-        )
+
       }
 
         {/*Clear*/}
