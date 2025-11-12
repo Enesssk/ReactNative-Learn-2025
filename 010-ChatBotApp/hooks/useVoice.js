@@ -1,6 +1,7 @@
 import Voice from "@react-native-voice/voice"
 import { useEffect, useState } from 'react';
 import { chatgptCall } from '../api/service/chatbotService';
+import Tts from 'react-native-tts';
 
 export default function useVoice() {
   const [recording, setRecording] = useState(false);
@@ -9,6 +10,21 @@ export default function useVoice() {
     {role: "system", content: "You are a helpful assistant."}
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
+
+
+  // For TTS BUG.
+  if (Tts.stop.length > 0) {
+    const originalStop = Tts.stop.bind(Tts);
+    Tts.stop = () => {
+      try {
+        return originalStop(false);
+      } catch (e) {
+        console.warn("TTS stop error (handled):", e.message);
+        return Promise.resolve();
+      }
+    };
+  }
 
   useEffect(() => {
     clearChat()
@@ -31,6 +47,7 @@ export default function useVoice() {
 
   const start = async () => {
     setRecording(true)
+    Tts.stop()
     try {
       await Voice.start("en-US")
     }catch (err) {
@@ -60,6 +77,7 @@ export default function useVoice() {
       const reply = await chatgptCall(newMessages)
       setMessages([...newMessages, {role: "assistant", content: reply}])
       setIsLoading(false)
+      startTTS(reply)
     }catch (err) {
       console.error("chat error",err)
     } finally {
@@ -68,9 +86,23 @@ export default function useVoice() {
     }
   }
 
+  const startTTS = (message) => {
+    setSpeaking(true)
+      Tts.speak(message,{
+        iosVoiceId: 'com.apple.ttsbundle.Moira-compact',
+        rate: 0.5,
+      });
+  }
+
+  const stopSpeaking = () => {
+    Tts.stop()
+    setSpeaking(false)
+  }
+
   const clearChat = () => {
     setMessages([]);
     setResult("")
+    Tts.stop()
   }
 
   //console.log("result",result)
@@ -80,8 +112,10 @@ export default function useVoice() {
     result,
     messages,
     isLoading,
+    speaking,
     start,
     stop,
     clearChat,
+    stopSpeaking,
   };
 }

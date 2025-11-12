@@ -19,18 +19,13 @@ import useVoice from '../../hooks/useVoice';
 import { chatgptCall } from '../../api/service/chatbotService';
 
 const Home = () => {
-  const [speaking, setSpeaking] = useState(false);
-  const {recording, result, messages , isLoading, start, stop, clearChat} = useVoice()
+  const {recording, result, messages, speaking, isLoading,
+    start, stop, clearChat, stopSpeaking} = useVoice()
 
 
   const clearAssistant = () => {
     clearChat()
   }
-
-  const stopSpeaking = () => {
-    setSpeaking(false)
-  }
-
 
 
   return (
