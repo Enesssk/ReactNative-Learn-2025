@@ -1,13 +1,13 @@
 import Voice from "@react-native-voice/voice"
 import { useEffect, useState } from 'react';
-import { chatgptCall } from '../api/service/chatbotService';
+import { chatgptCall, createImageCall } from '../api/service/chatbotService';
 import Tts from 'react-native-tts';
 
 export default function useVoice() {
   const [recording, setRecording] = useState(false);
   const [result, setResult] = useState(""); //recording result
   const [messages, setMessages] = useState([
-    {role: "system", content: "You are a helpful assistant."}
+    {role: "system", type: "text", content: "You are a helpful assistant."}
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -68,16 +68,23 @@ export default function useVoice() {
 
   const handleSend = async () => {
     if(!result.trim()) return //if result = "" => return.
-    const newMessages = [...messages, {role: "user", content: result}]
+    const newMessages = [...messages, {role: "user", type: "text", content: result}]
     setMessages(newMessages)
     setResult("")
 
     try {
       setIsLoading(true) //BEFORE APICALL
-      const reply = await chatgptCall(newMessages)
-      setMessages([...newMessages, {role: "assistant", content: reply}])
-      setIsLoading(false)
-      startTTS(reply)
+      //i ile arama yapıyorum bu kelimeler var mı?
+      const wantsImage = /(draw|create|generate|show me|picture|image|photo|resim|çiz|görsel|oluştur)/i;
+      if(wantsImage.test(result)) {
+        const url = await createImageCall(result)
+        //console.log("url", url)
+        setMessages([...newMessages, {role: "assistant", type: "image", content: url}])
+      }else {
+        const reply = await chatgptCall(newMessages)
+        setMessages([...newMessages, {role: "assistant", type: "text",  content: reply}])
+        startTTS(reply)
+      }
     }catch (err) {
       console.error("chat error",err)
     } finally {

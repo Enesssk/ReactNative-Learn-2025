@@ -26,8 +26,8 @@ const Assistants = props => {
           contentContainerStyle={globalStyle.scrollViewStyle}>
           {
             data.map((item, index) => {
-              if(item.role == "assistant") {
-                if(item.content && item.content.includes("https")) {
+              if(item.role === "assistant") {
+                if(item.type === "image") {
                   //its an ai image
                   return (
                     <View
