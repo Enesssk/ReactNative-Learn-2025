@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import PropTypes from "prop-types"
 import style from '../../screens/Home/style';
@@ -8,12 +8,12 @@ const Assistants = props => {
   const data = Array.isArray(props.data) ? props.data : []
   const scrollViewRef = useRef(null)
 
-  //for scrollview.
-   const updateScrollView = () => {
-    setTimeout(() => {
-      scrollViewRef.current?.scrollToEnd({animated: true})
-    },200)
-  }
+  //ScrollView
+  useEffect(() => {
+    if( scrollViewRef.current && data.length > 0) {
+      scrollViewRef.current.scrollToEnd({animated:true})
+    }
+  }, [data]); // data +- => scrollToEnd
 
   return (
     <View>
@@ -22,7 +22,7 @@ const Assistants = props => {
         style={style.assistantBackgroundContainer}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          //ref={scrollViewRef}
+          ref={scrollViewRef}
           contentContainerStyle={globalStyle.scrollViewStyle}>
           {
             data.map((item, index) => {
