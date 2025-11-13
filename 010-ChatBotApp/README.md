@@ -1,21 +1,22 @@
-# 🤖 ChatBotApp (React Native)
+## 🤖 ChatBotApp (React Native)
 
-Bu proje, **React Native** ile geliştirilmiş bir yapay zeka sohbet uygulamasıdır.  
-Kullanıcılar sesli komut ile sorularını sorabilir ya da görsel üretmek isteyebilirler. Uygulamam yapay zeka entegrasyonu ile sorulara cevap verebiliyor ve yapay zeka sesi ile verdiği cevapları seslendirebiliyor.
+  This project is an AI-powered chat application developed with React Native.
+  Users can ask questions or request image generation through voice commands.
+  The app integrates artificial intelligence to answer questions and uses text-to-speech (TTS) to vocalize its responses.
 
----
+## 🚀 Features
 
-## 🚀 Özellikler
+  - 🔊 Text-to-Speech (TTS): Listen to the chatbot’s responses with natural AI voice output.
+  
+  - 🎙️ Voice Input: Send voice commands using your microphone.
+  
+  - 💬 Real-time Chat: Get instant responses from the AI assistant.
+  
+  - 🎨 Modern UI: Built with ScrollViewRef and custom component structure.
+  
+  - ⚙️ API Integration: Powered by the OpenAI API.
 
-- 🔊 **TTS (Text-to-Speech):** Chatbot cevaplarını sesli olarak dinleyebilirsiniz.  
-- 🎙️ **Voice Input:** Mikrofon üzerinden sesli komut göndermebilirsiniz.  
-- 💬 **Gerçek zamanlı sohbet:** Anında yanıt sistemi.  
-- 🎨 **Modern arayüz:** ScrollViewRef ve özel component yapısı.  
-- ⚙️ **API bağlantısı:** OpenAI API.  
-
----
-
-## 🎨 Uygulama Tanıtım Videosu
+## 🎨 Application Demo Video
 
 https://github.com/user-attachments/assets/13a611b3-8d0f-4346-bdd0-022a768dde7a
 
