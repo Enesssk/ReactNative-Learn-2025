@@ -15,4 +15,7 @@ Kullanıcılar sesli komut ile sorularını sorabilir ya da görsel üretmek ist
 
 ---
 
+## 🎨 Uygulama Tanıtım Videosu
+
+https://github.com/user-attachments/assets/13a611b3-8d0f-4346-bdd0-022a768dde7a
 
