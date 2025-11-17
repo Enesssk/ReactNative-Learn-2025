@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { horizontalScale } from './scaling';
 
 const globalStyle = StyleSheet.create({
   flex: {
@@ -6,6 +7,9 @@ const globalStyle = StyleSheet.create({
   },
   appBackground: {
     backgroundColor: "white",
+  },
+  scrollView: {
+    paddingHorizontal: horizontalScale(8)
   }
 })
 
