@@ -31,12 +31,7 @@ const Featured = props => {
             return (
               <FeaturedImageCard
                 key={index}
-                name={restaurant.name}
-                star={restaurant.stars}
-                reviews={restaurant.reviews}
-                category={restaurant.category}
-                address={restaurant.address}
-                image={restaurant.image}/>
+                data={restaurant}/>
             )
           })
         }
