@@ -38,7 +38,7 @@ export const featured = {
     {
       id: 1,
       name: "Papa Johns",
-      image: require("../assets/images/icons8-pizza-96.png"),
+      image: require("../assets/images/n7yx-hero (1).jpg"),
       description: "Hot and pizzas",
       lng: 38.2145602,
       lat: -85.5324269,
@@ -76,6 +76,90 @@ export const featured = {
           image: require("../assets/images/icons8-pizza-96.png"),
         },
       ]
-    }
+    },
+    {
+      id: 2,
+      name: "Enes Kala",
+      image: require("../assets/images/n7yx-hero (1).jpg"),
+      description: "Hot and pizzas",
+      lng: 38.2145602,
+      lat: -85.5324269,
+      address: "434 second street",
+      stars: 4,
+      reviews: "4.4k",
+      category: "Fast Food",
+      dishes: [
+        {
+          id: 1,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+        {
+          id: 2,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+        {
+          id: 3,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+        {
+          id: 4,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+      ]
+    },
+    {
+      id: 3,
+      name: "Şeyma Coffe",
+      image: require("../assets/images/n7yx-hero (1).jpg"),
+      description: "Hot and pizzas",
+      lng: 38.2145602,
+      lat: -85.5324269,
+      address: "434 second street",
+      stars: 4,
+      reviews: "4.4k",
+      category: "Fast Food",
+      dishes: [
+        {
+          id: 1,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+        {
+          id: 2,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+        {
+          id: 3,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+        {
+          id: 4,
+          name: "Pizza",
+          description: "chezzy garlic pizza",
+          price: 10,
+          image: require("../assets/images/icons8-pizza-96.png"),
+        },
+      ]
+    },
   ]
 }
