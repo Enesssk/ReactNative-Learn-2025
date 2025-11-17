@@ -14,15 +14,15 @@ import { faArrowLeft, faMapPin, faStar } from '@fortawesome/free-solid-svg-icons
 import globalStyle from '../../assets/style/globalStyle';
 import { horizontalScale, scaleFontSize } from '../../assets/style/scaling';
 import Dishes from '../../components/Dishes/Dishes';
+import CardIcon from '../../components/CardIcon/CardIcon';
 
-function ScrollV() {
-  return null
-}
 
 const Restaurant = () => {
   const {params: item} = useRoute()
   const navigation = useNavigation();
   return (
+    <View style={globalStyle.flex}>
+      <CardIcon/>
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={[globalStyle.flex, globalStyle.appBackground]}
@@ -66,6 +66,7 @@ const Restaurant = () => {
     </SafeAreaView>
     </View>
     </ScrollView>
+    </View>
   );
 }
 
