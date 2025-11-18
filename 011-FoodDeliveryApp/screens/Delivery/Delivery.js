@@ -7,6 +7,7 @@ import style from "./style"
 import globalStyle from '../../assets/style/globalStyle';
 import { useNavigation } from '@react-navigation/native';
 import { featured } from '../../constants';
+import { Routes } from '../../navigation/Routes';
 
 const Delivery = () => {
   const navigation = useNavigation();
@@ -72,6 +73,7 @@ const Delivery = () => {
         </View>
         <TouchableOpacity
         style={style.orderButton}
+        onPress={() => navigation.navigate(Routes.OrderPreparing)}
         >
           <Text style={style.buttonText}>Place Order</Text>
         </TouchableOpacity>

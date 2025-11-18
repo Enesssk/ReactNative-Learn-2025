@@ -98,7 +98,7 @@ const style = StyleSheet.create({
     width: '100%',
     height: verticalScale(120),
     borderRadius: horizontalScale(10),
-    position: 'absolute',
+    position: 'absolute', //en alta sabitlik için.
     bottom: 0,
   },
   subtotalContainer: {
