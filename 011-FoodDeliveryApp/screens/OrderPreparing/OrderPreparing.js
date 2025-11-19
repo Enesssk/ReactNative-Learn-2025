@@ -11,7 +11,7 @@ const OrderPreparing = () => {
   useEffect(() => {
     setTimeout(() => {
       // move to finalScreen
-      navigation.navigate(Routes.FinalScreen)
+      navigation.navigate(Routes.MapScreen)
     },3000)
   }, []);
 
