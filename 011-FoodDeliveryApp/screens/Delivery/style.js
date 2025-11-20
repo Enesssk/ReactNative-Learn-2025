@@ -133,6 +133,15 @@ const style = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
   },
+  plusContainer: {
+    width: horizontalScale(24),
+    height: verticalScale(24),
+    borderRadius: horizontalScale(12),
+    marginLeft: horizontalScale(8),
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default style

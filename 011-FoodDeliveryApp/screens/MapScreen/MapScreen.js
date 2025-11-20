@@ -17,12 +17,18 @@ import {
 import { scaleFontSize } from '../../assets/style/scaling';
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from '../../navigation/Routes';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../../redux/reducers/Restaurant';
+import { emptyCard } from '../../redux/reducers/Card';
 
 const MapScreen = () => {
   const restaurants = useSelector(selectRestaurant)
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const cancelOrder = () => {
+    navigation.navigate(Routes.Home)
+    dispatch(emptyCard)
+  }
   return (
     <View style={[globalStyle.flex, globalStyle.appBakground]}>
       {/*MapView*/}
@@ -73,7 +79,7 @@ const MapScreen = () => {
               <FontAwesomeIcon icon={faPhone} size={scaleFontSize(28)} color={"black"}/>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate(Routes.Home)}
+              onPress={cancelOrder}
               style={style.iconContainer}>
               <FontAwesomeIcon icon={faClose} size={scaleFontSize(28)} color={"black"}/>
             </TouchableOpacity>
