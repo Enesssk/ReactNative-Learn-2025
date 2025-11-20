@@ -19,7 +19,7 @@ const CardIcon = () => {
           style={style.backgroundContainer}
         >
           <View style={style.totalContainer}>
-            <Text style={style.text}>{cardItems.length}</Text>
+            <Text style={style.textTotal}>{cardItems.length}</Text>
           </View>
           <Text style={style.text}>View Card</Text>
           <Text style={style.text}>${totalPrice}</Text>

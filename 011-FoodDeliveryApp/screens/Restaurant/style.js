@@ -23,7 +23,6 @@ const style = StyleSheet.create({
     borderTopRightRadius: horizontalScale(40),
     marginTop: verticalScale(-48),
     backgroundColor: "white",
-    flex: 1,
   },
   titleText: {
     fontSize: 28,

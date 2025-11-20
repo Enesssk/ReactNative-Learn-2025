@@ -25,10 +25,12 @@ const MapScreen = () => {
   const restaurants = useSelector(selectRestaurant)
   const navigation = useNavigation();
   const dispatch = useDispatch();
+
   const cancelOrder = () => {
     navigation.navigate(Routes.Home)
-    dispatch(emptyCard)
+    dispatch(emptyCard())
   }
+
   return (
     <View style={[globalStyle.flex, globalStyle.appBakground]}>
       {/*MapView*/}
@@ -37,8 +39,8 @@ const MapScreen = () => {
           initialRegion={{
             latitude: restaurants.lat,
             longitude: restaurants.lng,
-            latitudeDelta: 0.01,
-            longitudeDelta: 0.01,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
           }}
           mapType={"standard"}
         >

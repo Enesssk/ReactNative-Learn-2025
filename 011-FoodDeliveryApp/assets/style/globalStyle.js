@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { horizontalScale } from './scaling';
+import { horizontalScale, verticalScale } from './scaling';
 
 const globalStyle = StyleSheet.create({
   flex: {
@@ -10,6 +10,9 @@ const globalStyle = StyleSheet.create({
   },
   scrollView: {
     paddingHorizontal: horizontalScale(8)
+  },
+  restaurantScrollView: {
+    paddingBottom: verticalScale(16),
   }
 })
 

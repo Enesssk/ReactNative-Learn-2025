@@ -5,7 +5,7 @@ const style = StyleSheet.create({
   topContainer: {
     backgroundColor: "white",
     width: "90%",
-    height: verticalScale(120),
+    paddingVertical: verticalScale(12),
     borderRadius: horizontalScale(20),
     marginHorizontal: horizontalScale(16),
     marginVertical: verticalScale(8),
@@ -48,7 +48,8 @@ const style = StyleSheet.create({
   pieceContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    alignSelf: "flex-end",
+    marginLeft: "auto",
+    marginTop: "auto",
     alignItems: "center",
     marginEnd: horizontalScale(8),
   },

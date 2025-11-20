@@ -35,7 +35,7 @@ const Restaurant = () => {
       <CardIcon/>
     <ScrollView
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={[globalStyle.flex, globalStyle.appBackground]}
+      contentContainerStyle={[globalStyle.appBackground, globalStyle.restaurantScrollView]}
     >
     <View>
       <Image style={style.image} source={item.image} />
@@ -49,13 +49,11 @@ const Restaurant = () => {
       </TouchableOpacity>
 
       {/*Other Info*/}
-      <SafeAreaView style={globalStyle.flex}>
+      <SafeAreaView>
         <View style={style.backgroundContainer}>
-
-
           <Text style={style.titleText}>{item.name}</Text>
           <View style={style.infoContainer}>
-            <FontAwesomeIcon icon={faStar} size={scaleFontSize(20)} color="black" />
+            <FontAwesomeIcon icon={faStar} size={scaleFontSize(20)} color="#eadf0eff" />
             <Text style={style.infoText}>{item.stars}({item.reviews} review) - {item.category}</Text>
             <FontAwesomeIcon icon={faMapPin} size={scaleFontSize(20)} color={"black"}/>
             <Text>{item.address}</Text>

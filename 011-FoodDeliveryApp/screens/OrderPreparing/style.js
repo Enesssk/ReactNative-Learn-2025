@@ -3,7 +3,9 @@ import { horizontalScale, scaleFontSize } from '../../assets/style/scaling';
 
 const style = StyleSheet.create({
   topContainer: {
-
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   imageContainer: {
     alignItems: "center",
