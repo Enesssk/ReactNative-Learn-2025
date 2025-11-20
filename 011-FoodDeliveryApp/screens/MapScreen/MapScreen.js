@@ -17,9 +17,11 @@ import {
 import { scaleFontSize } from '../../assets/style/scaling';
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from '../../navigation/Routes';
+import { useSelector } from 'react-redux';
+import { selectRestaurant } from '../../redux/reducers/Restaurant';
 
 const MapScreen = () => {
-  const restaurants = featured.restaurants[0]
+  const restaurants = useSelector(selectRestaurant)
   const navigation = useNavigation();
   return (
     <View style={[globalStyle.flex, globalStyle.appBakground]}>

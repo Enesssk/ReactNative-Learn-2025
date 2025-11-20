@@ -14,11 +14,12 @@ export const CardSlice = createSlice({
     removeFromCard: (state, action) => {
       let newCard = [...state.items]
       let itemIndex = state.items.findIndex(item => item.id == action.payload.id)
-      if(itemIndex => 0) {
+      if(itemIndex >= 0) {
         newCard.splice(itemIndex, 1); //seçilen id ye ait değeri sildim.
       } else {
         console.log("can't remove the item that is not added to card")
       }
+      state.items = newCard
     },
     emptyCard: (state, action) => {
       state.items = []
@@ -29,7 +30,7 @@ export const CardSlice = createSlice({
 export const { addToCard, removeFromCard, emptyCard } = CardSlice.actions
 
 export const selectCardItems = (state) => state.card.items
-export const selectCardItemsById = (state, id) => state.card.items.filter(item => item.id == id)
-export const selectCardTotal = state => state.card.item.reduce((total, item) => total + item.price, 0)
+export const selectCardItemsById = (state, id) => state.card.items.filter(item => item.id === id)
+export const selectCardTotal = state => state.card.items.reduce((total, item) => total + item.price, 0)
 
 export default CardSlice.reducer;

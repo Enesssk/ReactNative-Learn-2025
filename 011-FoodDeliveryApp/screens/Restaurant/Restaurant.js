@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -15,11 +15,21 @@ import globalStyle from '../../assets/style/globalStyle';
 import { horizontalScale, scaleFontSize } from '../../assets/style/scaling';
 import Dishes from '../../components/Dishes/Dishes';
 import CardIcon from '../../components/CardIcon/CardIcon';
+import { setRestaurant } from '../../redux/reducers/Restaurant';
+import { useDispatch } from 'react-redux';
 
 
 const Restaurant = () => {
   const {params: item} = useRoute()
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(item && item.id) {
+      dispatch(setRestaurant({...item})) // restaurant bilgilerini redux a verdim.
+    }
+  }, []);
+
   return (
     <View style={globalStyle.flex}>
       <CardIcon/>

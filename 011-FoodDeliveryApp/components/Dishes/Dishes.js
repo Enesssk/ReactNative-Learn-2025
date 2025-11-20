@@ -1,13 +1,30 @@
 import React from "react"
-import { Image, Text, View } from 'react-native';
+import { Image, Text, Touchable, TouchableOpacity, View } from 'react-native';
 import PropTypes from "prop-types"
 import style from "./style"
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { scaleFontSize } from '../../assets/style/scaling';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addToCard,
+  removeFromCard,
+  selectCardItems,
+  selectCardItemsById,
+} from '../../redux/reducers/Card';
 
 const Dishes = props => {
   const { image, name, description, price} = props.data
+  const dispatch = useDispatch()
+  const selectedItemValue = useSelector(state => selectCardItemsById(state, props.data.id))
+
+  const handleIncrease = () => {
+    dispatch(addToCard({...props.data}))
+  }
+  const handleDecrease = () => {
+    dispatch(removeFromCard({...props.data}))
+  }
+
   return (
     <View style={style.topContainer}>
       <View style={style.rowContainer}>
@@ -22,13 +39,18 @@ const Dishes = props => {
           <Text style={style.nameText}>${price}</Text>
         </View>
         <View style={style.pieceContainer}>
-          <View style={style.plusContainer}>
+          <TouchableOpacity
+            onPress={handleDecrease}
+            disabled={!selectedItemValue}
+            style={style.plusContainer}>
             <FontAwesomeIcon icon={faMinus} size={scaleFontSize(24)} color={"white"}/>
-          </View>
-          <Text style={style.pieceText}>2</Text>
-          <View style={style.plusContainer}>
+          </TouchableOpacity>
+          <Text style={style.pieceText}>{selectedItemValue.length}</Text>
+          <TouchableOpacity
+            onPress={handleIncrease}
+            style={style.plusContainer}>
             <FontAwesomeIcon icon={faPlus} size={scaleFontSize(24)} color={"white"}/>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

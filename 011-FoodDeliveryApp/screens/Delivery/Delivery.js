@@ -6,12 +6,13 @@ import { scaleFontSize } from '../../assets/style/scaling';
 import style from "./style"
 import globalStyle from '../../assets/style/globalStyle';
 import { useNavigation } from '@react-navigation/native';
-import { featured } from '../../constants';
 import { Routes } from '../../navigation/Routes';
+import { useSelector } from 'react-redux';
+import { selectRestaurant } from '../../redux/reducers/Restaurant';
 
 const Delivery = () => {
   const navigation = useNavigation();
-  const restaurant = featured.restaurants[0]
+  const restaurant = useSelector(selectRestaurant)
   return (
     <SafeAreaView style={[globalStyle.flex, globalStyle.appBackground]}>
         <TouchableOpacity
